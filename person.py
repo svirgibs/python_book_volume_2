@@ -1,5 +1,4 @@
 
-# test
 class Person:
     def __init__(self, name, job=None, pay=0):
         self.name = name
@@ -16,6 +15,14 @@ class Person:
         return '[Person: %s, %s]' % (self.name, self.pay)
 
 
+class Manager(Person):
+    def __init__(self, name, pay):
+        Person.__init__(self, name, 'mgr', pay)
+
+    def give_raise(self, percent, bonus=.10):
+        Person.give_raise(self, percent + bonus)
+
+
 if __name__ == '__main__':
     bob = Person('Bob Smith')
     sue = Person('Sue Jones', job='dev', pay=100000)
@@ -24,3 +31,7 @@ if __name__ == '__main__':
     print(bob.last_name(), sue.last_name())
     sue.give_raise(.10)
     print(sue)
+    tom = Manager('Tom Jones', 50000)
+    tom.give_raise(.10)
+    print(tom.last_name())
+    print(tom)

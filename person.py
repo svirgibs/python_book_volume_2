@@ -1,5 +1,14 @@
+"""
+Регистрирует и обрабатывает сведения о людях. Для тестирования классов из этого файла запустите его напрямую.
+"""
 
-class Person:
+from classtools import AttrDisplay
+
+
+class Person(AttrDisplay):
+    """
+    Создает и обрабатывает записи о людях
+    """
     def __init__(self, name, job=None, pay=0):
         self.name = name
         self.job = job
@@ -11,11 +20,11 @@ class Person:
     def give_raise(self, percent):
         self.pay = int(self.pay * (1 + percent))
 
-    def __repr__(self):
-        return '[Person: %s, %s]' % (self.name, self.pay)
-
 
 class Manager(Person):
+    """
+    Настроенная версия Person со специальными требованиями
+    """
     def __init__(self, name, pay):
         Person.__init__(self, name, 'mgr', pay)
 
